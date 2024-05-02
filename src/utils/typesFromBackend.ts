@@ -175,7 +175,6 @@ export interface TRest {
   enableDateDelivery: boolean
   country: ECountry
   incomingOrderId?: number
-  customInput_ids: TCustomInput[]
   paymentPublicID: string | null
   singleMessagePayment: boolean
   isAdult: boolean
@@ -201,40 +200,6 @@ export interface IMultiLang {
   [ECountry.EN]?: string
   [ECountry.KZ]?: string
 }
-export interface TSale {
-  _id: string
-  action: boolean
-  title: string
-  description: string
-  image: string
-  dateStartSales: string
-  dateFinishSales: string
-  rest_id: string
-}
-export interface TCategoryModifier {
-  _id: string
-  active: boolean
-  title: IMultiLang
-  sort: number
-  categoryModifiers_id: TCategoryModifier | string
-  modifiers_ids: TModifier[]
-  idFromIiko: string
-  isGroupModifierCategoryRadio: boolean
-  isGroupModifierRequired: boolean
-}
-export interface TModifier {
-  _id: string
-  title: IMultiLang
-  active: boolean
-  image: string
-  sort: number
-  price: number
-  categoryModifier: string
-  unit: string
-  weight: number
-  description: IMultiLang
-  idFromIiko: string
-}
 
 export interface TCategory {
   id: string
@@ -242,6 +207,7 @@ export interface TCategory {
   title: string
   items: TDish[]
 }
+
 export interface TDish {
   id: string
   title: string
@@ -251,18 +217,7 @@ export interface TDish {
   categoryId: number
   category: TCategory
 }
-export interface TSubCategories {
-  subcategories: TSubCategories[] | []
-  category: TCategory
-  dishes: TDish[] | []
-}
-export interface TCustomInput {
-  _id: string
-  name: string
-  placeholder: IMultiLang
-  label: IMultiLang
-  required: boolean
-}
+
 export interface TAdmin {
   level_access: number
   _id: string
