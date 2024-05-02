@@ -2,7 +2,7 @@ import { Table } from 'antd'
 import { ColumnsType } from 'antd/es/table'
 import React, { FC, useContext } from 'react'
 import { ECountry, TDish } from '../../utils/typesFromBackend'
-import * as restaurantAPI from '../../utils/api/user-api'
+import * as userAPI from '../../utils/api/user-api'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import imageNoPhoto from '../../assets/images/no_photo.png'
 import { BASE_URL_CDN } from '../../utils/const'
@@ -28,7 +28,7 @@ const Dishes: FC<IMenu> = ({ token, pathRest, t }) => {
   const location = useLocation()
 
   React.useEffect(() => {
-    restaurantAPI
+    userAPI
       .getUsers(token)
       .then((res) => {
         setData(res)
@@ -68,12 +68,12 @@ const Dishes: FC<IMenu> = ({ token, pathRest, t }) => {
       title: `${t('name')}`,
       dataIndex: 'title',
       key: 'title',
-      render: (title, user) => (
+      render: (email, user) => (
         <Link to={`/${pathRest}/dish/:${user.id}`}>{user.email}</Link>
       ),
       sorter: (a, b) => {
-        if (a.title !== undefined && b.title !== undefined) {
-          return a.title.localeCompare(b.title)
+        if (a.email !== undefined && b.email !== undefined) {
+          return a.email.localeCompare(b.email)
         }
         return 0
       }
@@ -88,22 +88,22 @@ const Dishes: FC<IMenu> = ({ token, pathRest, t }) => {
         </Link>
       ),
       sorter: (a, b) => {
-        if (a.value !== undefined && b.value !== undefined) {
-          return a.value.localeCompare(b.value)
+        if (a.id !== undefined && b.id !== undefined) {
+          return a.id.localeCompare(b.id)
         }
         return 0
       }
     },
-    {
-     title: `${t('price')}`,
-     dataIndex: 'price',
-     key: 'price',
-     render: (price) => <p>{price}</p>,
-     sorter: (a, b) => a.price - b.price,
-     filters: [...nameTariffs],
-     onFilter: (value: string | number | boolean, record) =>
-       record.price === value
-    }
+  // {
+  //  title: `${t('price')}`,
+  //  dataIndex: 'price',
+  //  key: 'price',
+  //  render: (price) => <p>{price}</p>,
+  //  sorter: (a, b) => a.price - b.price,
+  //  filters: [...nameTariffs],
+  //  onFilter: (value: string | number | boolean, record) =>
+  //    record.price === value
+  // }
   ]
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>

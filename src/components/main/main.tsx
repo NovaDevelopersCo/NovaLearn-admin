@@ -14,7 +14,7 @@ import i18n from '../i18n/i18n'
 import ChoiseLanguage from '../choise-language/choise-language'
 import ProtectedRoute from '../protected-route/protected-route'
 import Sidebar from '../sidebar/sidebar'
-import Items from '../../pages/users/users'
+import Users from '../../pages/users/users'
 import AddRestaurants from '../../pages/add-dish/add-dish'
 import Item from '../../pages/dish/dish'
 import Admins from '../../pages/categories/categories'
@@ -166,7 +166,7 @@ const Main: FC<IMain> = ({ token, pathRest, setToken }) => {
                   isLoggedIn={isLoggedIn}
                   pathRest={pathRest}
                 >
-                  <Items
+                  <Users
                     token={token}
                     pathRest={pathRest}
                     t={t}
