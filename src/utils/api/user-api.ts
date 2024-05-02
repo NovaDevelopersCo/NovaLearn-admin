@@ -3,11 +3,12 @@
 import { BASE_URL } from '../const'
 import { handleResponse } from '../helpers'
 
-export const getDishes = async () => {
-  return await fetch(`${BASE_URL}/items`, {
+export const getUsers = async (token: string) => {
+  return await fetch(`${BASE_URL}/users`, {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
     }
   }).then(async (res) => await handleResponse(res))
 }

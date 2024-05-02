@@ -60,7 +60,7 @@ const Autorization: FC<IAutorization> = ({ setIsLoggedIn, t, setToken }) => {
       .autorization(values)
       .then((res) => {
         localStorage.setItem('token', res.token)
-        setToken(res.authToken)
+        setToken(res.token)
         setIsLoggedIn(true)
         if (storedInitialRoute) {
           history.push(storedInitialRoute)

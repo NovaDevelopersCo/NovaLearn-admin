@@ -245,7 +245,11 @@ export interface TCategory {
 export interface TDish {
   id: string
   title: string
+  email: string
   description: string
+  roles: string[]
+  value: string
+  banned: boolean
   image: any
   price: number
   categoryId: number

@@ -4,7 +4,7 @@ import { useHistory, useLocation, useRouteMatch } from 'react-router-dom'
 import { ELevelAccess, TAdmin, TRest } from '../../utils/typesFromBackend'
 import * as adminAPI from '../../utils/api/category-api'
 import { NotificationContext } from '../notification-provider/notification-provider'
-import * as restaurantAPI from '../../utils/api/dishes-api'
+import * as restaurantAPI from '../../utils/api/user-api'
 
 interface IGroupModifiersForDish {
   pathRest: string
@@ -41,7 +41,7 @@ const AdminPassword: FC<IGroupModifiersForDish> = ({ token, pathRest, t }) => {
 
   React.useEffect(() => {
     restaurantAPI
-      .getDishes()
+      .getUsers(token)
       .then((res) => {
         const nameRests: { [key: string]: string } = {}
         res.rests.forEach((rest: TRest) => {
